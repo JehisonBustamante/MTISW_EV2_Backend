@@ -1,0 +1,55 @@
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://eureka-service:8761/eureka/
+spring:
+  cloud:
+    config:
+      enabled: true
+      uri: http://localhost:8081  # Esta es la configuración de un servidor de configuración remoto, ajusta si es necesario
+
+  application:
+    name: vehiculo-service
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+      properties:
+        hibernate:
+          dialect: org.hibernate.dialect.MySQLDialect
+          default_schema: public
+          jdbc:
+            lob:
+              non_contextual_creation: true
+        format_sql: true
+        temp:
+          use_jdbc_metadata_defaults: false
+        show_sql: true
+        jdbc:
+          batch_size: 25
+          time_zone: UTC
+        cache:
+          use_second_level_cache: true
+          use_query_cache: true
+          region:
+            factory_class: hibernate.cache.ehcache.SingletonEhCacheRegionFactory
+          hbm2ddl:
+            auto: update
+          EhCache:
+            configurationResourceName: ehcache.xml
+        generation:
+          ddl:
+            inject_globals: true
+          database:
+            action: create
+
+  datasource:
+    platform: mysql
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    dbname: ev2_vehiculoservice
+    url: jdbc:mysql://localhost:3306/ev2_vehiculoservice
+    username: root
+    password: 1234
+
