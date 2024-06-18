@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.ws.rs.core.Response;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("api/vehiculos")
@@ -26,13 +26,13 @@ public class VehiculoController {
             return ResponseEntity.noContent().build();
         }
     }
-    @GetMapping("/{id}")
-    public ResponseEntity<VehiculoEntity> obtenerPorID(@PathVariable("id") int id)
+    @GetMapping("/por-id/{id}")
+    public ResponseEntity<Optional<VehiculoEntity>> obtenerPorID(@PathVariable("id") int id)
     {
-        return ResponseEntity.ok(vehiculoService.obtenerPorID(id));
+        return ResponseEntity.ok(vehiculoService.obtenerPorID((Integer) id));
     }
 
-    @GetMapping("/{s}")
+    @GetMapping("/por-marca/{s}")
     public ResponseEntity<List<VehiculoEntity>> todasLasMarcas(@PathVariable("s") String s)
     {
         return ResponseEntity.ok(vehiculoService.todasPorMarca(s));

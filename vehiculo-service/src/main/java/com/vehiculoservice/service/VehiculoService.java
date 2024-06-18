@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class VehiculoService {
@@ -22,9 +23,9 @@ public class VehiculoService {
         vehiculoRepository.save(vehiculoEntity);
     }
 
-    public VehiculoEntity obtenerPorID(Integer id)
+    public Optional<VehiculoEntity> obtenerPorID(Integer id)
     {
-        return vehiculoRepository.getById(id);
+        return vehiculoRepository.findById(id);
     }
 
     public List<VehiculoEntity> todasPorMarca(String marca)

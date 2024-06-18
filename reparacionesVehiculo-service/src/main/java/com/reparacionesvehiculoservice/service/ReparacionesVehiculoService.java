@@ -30,7 +30,7 @@ public class ReparacionesVehiculoService {
         return reparacionesVehiculoRepository.findById(id).orElse(null);
     }
 
-    public ReparacionesVehiculo save(ReparacionesVehiculo reparacionesVehiculo) {
+    public ReparacionesVehiculo nuevo(ReparacionesVehiculo reparacionesVehiculo) {
         return reparacionesVehiculoRepository.save(reparacionesVehiculo);
     }
 
@@ -45,12 +45,12 @@ public class ReparacionesVehiculoService {
 
     public VehiculoEntity obtenerVehiculoPorID(Integer id)
     {
-        return restTemplate.getForObject("http://vehiculo-service/api/vehiculos/" + id, VehiculoEntity.class);
+        return restTemplate.getForObject("http://vehiculo-service/api/vehiculos/por-id" + id, VehiculoEntity.class);
     }
 
     public List<VehiculoEntity> todasPorMarca(String s)
     {
-        return restTemplate.getForObject("http://vehiculo-service/api/vehiculos/" + s, List.class);
+        return restTemplate.getForObject("http://vehiculo-service/api/vehiculos/por-marca" + s, List.class);
     }
 
     public Integer precioReparacion(ReparacionesVehiculo reparacionesVehiculo) {

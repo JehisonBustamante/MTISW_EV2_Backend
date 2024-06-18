@@ -11,4 +11,6 @@ public interface VehiculoRepository extends JpaRepository<VehiculoEntity, Intege
     List<VehiculoEntity> findAllByMarca(String marca);
 
     List<VehiculoEntity> findAllByMotor(String motor);
+
+
 }

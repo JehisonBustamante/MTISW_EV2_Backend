@@ -32,9 +32,9 @@ public class ReparacionesVehiculoController {
     }
 
     @PostMapping("/nueva-reparacion")
-    public ResponseEntity<ReparacionesVehiculo> save(@RequestBody ReparacionesVehiculo reparacionesVehiculo) {
-        ReparacionesVehiculo reparacionesVehiculoNew = reparacionesVehiculoService.save(reparacionesVehiculo);
-        return ResponseEntity.ok(reparacionesVehiculoNew);
+    public ResponseEntity<String> save(@RequestBody ReparacionesVehiculo reparacionesVehiculo) {
+        reparacionesVehiculoService.nuevo(reparacionesVehiculo);
+        return ResponseEntity.ok("Reparacion del vehiculo agregada con exito.");
     }
 
     @GetMapping("/porVehiculo/{vehiculoID}")
